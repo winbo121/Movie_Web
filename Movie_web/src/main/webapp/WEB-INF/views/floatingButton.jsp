@@ -1,0 +1,86 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/floating.css"/>
+
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type='text/javascript'>
+	//<![CDATA[
+	// 사용할 앱의 JavaScript 키를 설정해 주세요.
+	Kakao.init("fa96be68b087e16a0199c98f6c8c68bf");
+
+	function sendLink() {
+		Kakao.Link
+				.sendDefault({
+					objectType : 'location',
+					address : '서울특별시 종로구 종로12길 15 5층 (관철동 13-13)',
+					addressTitle : '솔데스크',
+					content : {
+						title : '무비누림',
+						description : '#영화 #욜로 #요즘 영화 뭐하지? #취미',
+						imageUrl : 'https://cdn.pixabay.com/photo/2017/11/24/10/43/admission-2974645_1280.jpg',
+						link : {
+							mobileWebUrl : 'http://winbo121.cafe24.com/Movie_web/intro'
+
+						}
+					},
+					buttons : [ {
+						title : '모바일 웹으로 보기',
+						link : {
+							mobileWebUrl : 'http://winbo121.cafe24.com/Movie_web/intro'
+						}
+					} ]
+				});
+	}
+	//]]>
+
+	function shareFB()
+	{
+		window
+				.open('https://www.facebook.com/sharer/sharer.php?u=http://winbo121.cafe24.com/Movie_web/intro');
+	}
+</script>
+
+
+<div class="flBtn flBtn-position-br flBtn-size-medium">
+	<input type="checkbox">
+	<a href="" data-role="main">
+		<i class="fas fa-plus"></i>		
+	</a>
+	<ul class="flBtn-first">
+		<li><a href="http://winbo121.cafe24.com/Movie_web/map" tooltip="map"><i class="fas fa-map-signs"></i></a></li>
+		<li><a href="http://winbo121.cafe24.com/Movie_web/movie_search" tooltip="search"><i class="fas fa-search"></i></a></li>
+		<li><a href="http://winbo121.cafe24.com/Movie_web/movie" tooltip="movie"><i class="fas fa-film"></i></a></li>
+		<li><a href="http://winbo121.cafe24.com/Movie_web/intro" tooltip="홈"><i class="fas fa-home"></i></a></li>
+		
+	</ul>
+	<ul class="flBtn-second">
+	<li><a id="kakao-link-btn" href="javascript:sendLink()" tooltip="kakao"> <img
+		src="${pageContext.request.contextPath}/resources/css/img/kakao-talk.svg" style="width: 20px; height: 40px;"></a></li>
+		<li><a href="javascript:shareFB();" tooltip="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+
+		<script type="text/javascript">
+		
+			// 모바일 공유
+			function share_band(content, url){
+			    content = content + " " + url;
+			    var param = 'create/post?text=' + encodeURIComponent(content);
+			    if (navigator.userAgent.match(/android/i)) {
+			        setTimeout(function(){
+			            location.href = 'intent://' + param + '#Intent;package=com.nhn.android.band;end';
+			        }, 100);
+			    } else if (navigator.userAgent.match(/(iphone)|(ipod)|(ipad)/i)) {
+			        location.href = 'bandapp://' + param;
+			    }
+			 
+			 /*웹 공유
+			    content = content + " " + url;
+			    var shareUrl = "https://www.band.us/plugin/share?body="+encodeURIComponent(content);
+			    window.open(shareUrl, "share_band", "width=410, height=540, resizable=no");
+			 */   
+			}
+			</script>
+
+		<li><a href="javascript:void(0);" onclick="share_band('무비누림', 'http://winbo121.cafe24.com/Movie_web/intro');return false;" tooltip="Band"><img
+		src="${pageContext.request.contextPath}/resources/css/img/naverband_icon.JPG" style="width: 25px; height: 25px; margin-top: 7px;"></a></li>
+	</ul>
+</div>
