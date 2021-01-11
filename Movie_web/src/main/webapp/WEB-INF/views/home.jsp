@@ -22,7 +22,7 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<title>무비누림</title>
+<title>무비누림(movie)</title>
 </head>
 <body>
 
